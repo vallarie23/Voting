@@ -51,7 +51,7 @@
             <div id="schoolAdmin" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">              
-                    <a class="collapse-item" href="{{route("schoolAdmins_index")}}">All School Admins</a>
+                    <a class="collapse-item" href="{{url("schooladmin-datatable")}}">All School Admins</a>
                    
                 </div>
             </div>
@@ -66,7 +66,7 @@
             <div id="voters" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">              
-                    <a class="collapse-item" href="{{route('voters_index')}}">All Voters</a>
+                    <a class="collapse-item" href="{{url('voter-datatable')}}">All Voters</a>
                    
                 </div>
             </div>
@@ -91,7 +91,7 @@
             <div id="position" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">              
-                    <a class="collapse-item" href="{{route('position_index')}}">All Positions</a>
+                    <a class="collapse-item" href="{{url('position-datatable')}}">All Positions</a>
                    
                 </div>
             </div>
@@ -106,7 +106,7 @@
             <div id="candidates" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">              
-                    <a class="collapse-item" href="{{route('candidate_index')}}">All Candidates</a>
+                    <a class="collapse-item" href="{{url('candidate-datatable')}}">All Candidates</a>
                 
                    
                 </div>

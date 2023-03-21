@@ -36,7 +36,7 @@
         
    
     <!-- Sidebar -->
-    <x-side_bar/>
+    <x-sidebar/>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">

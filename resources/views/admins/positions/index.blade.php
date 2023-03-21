@@ -9,7 +9,7 @@
 <h2>Positions</h2>
 </div>
 <div class="float-right mb-2">
-<a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Positions</a>
+<a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Position</a>
 </div>
 </div>
 </div>
@@ -19,7 +19,7 @@
 </div>
 @endif
 <div class="card-body">
-<table class="table table-bordered" id="positions-datatable">
+<table class="table table-bordered" id="position-datatable">
 <thead>
 <tr>
 <th>Id</th>
@@ -30,20 +30,20 @@
 </table>
 </div>
 </div>
-<!-- boostrap school model -->
-<div class="modal fade" id="positions-modal" aria-hidden="true">
+<!-- boostrap position model -->
+<div class="modal fade" id="position-modal" aria-hidden="true">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
 <div class="modal-header">
-<h4 class="modal-title" id="PositionsModal"></h4>
+<h4 class="modal-title" id="PositionModal"></h4>
 </div>
 <div class="modal-body">
-<form action="javascript:void(0)" id="PositionsForm" name="PositionsForm" class="form-horizontal" method="POST" enctype="multipart/form-data">
+<form action="javascript:void(0)" id="PositionForm" name="PositionForm" class="form-horizontal" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="id" id="id">
 <div class="form-group">
 <label for="name" class="col-sm-2 control-label">Name</label>
 <div class="col-sm-12">
-<input type="text" class="form-control" id="name" name="name" placeholder="Enter Positions Name" maxlength="50" required="">
+<input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" maxlength="50" required="">
 </div>
 </div>  
 
@@ -61,81 +61,85 @@
 <!-- end bootstrap model -->
 </body>
 <script type="text/javascript">
-$(document).ready( function () {
-$.ajaxSetup({
-headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-}
-});
-$('#schooladmin-datatable').DataTable({
-processing: true,
-serverSide: true,
-ajax: "{{ url('positionsadmin-datatable') }}",
-columns: [
-{ data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
-{data: 'action', name: 'action', orderable: false},
-],
-order: [[0, 'desc']]
-});
-});
-function add(){
-$('#PositionsForm').trigger("reset");
-$('#PositionsModal').html("Add Positions");
-$('#positions-modal').modal('show');
-$('#id').val('');
-}   
-function editFunc(id){
-$.ajax({
-type:"POST",
-url: "{{ url('edit-positions') }}",
-data: { id: id },
-dataType: 'json',
-success: function(res){
-$('#PositionsModal').html("Edit Positions");
-$('#positions-modal').modal('show');
-$('#id').val(res.id);
-$('#name').val(res.name);
-}
-});
-}  
-function deleteFunc(id){
-if (confirm("Delete Record?") == true) {
-var id = id;
-// ajax
-$.ajax({
-type:"POST",
-url: "{{ url('delete-positions') }}",
-data: { id: id },
-dataType: 'json',
-success: function(res){
-var oTable = $('#positions-datatable').dataTable();
-oTable.fnDraw(false);
-}
-});
-}
-}
-$('#PositionForm').submit(function(e) {
-e.preventDefault();
-var formData = new FormData(this);
-$.ajax({
-type:'POST',
-url: "{{ url('store-positions')}}",
-data: formData,
-cache:false,
-contentType: false,
-processData: false,
-success: (data) => {
-$("#school-modal").modal('hide');
-var oTable = $('#positions-datatable').dataTable();
-oTable.fnDraw(false);
-$("#btn-save").html('Submit');
-$("#btn-save"). attr("disabled", false);
-},
-error: function(data){
-console.log(data);
-}
-});
-});
-</script>
+    $(document).ready( function () {
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
+    $('#position-datatable').DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: "{{ url('position-datatable') }}",
+    columns: [
+    { data: 'id', name: 'id' },
+    { data: 'name', name: 'name' },
+    {data: 'action', name: 'action', orderable: false},
+    ],
+    order: [[0, 'desc']]
+    });
+    });
+    function add(){
+    $('#PositionForm').trigger("reset");
+    $('#PositionModal').html("Add Position");
+    $('#position-modal').modal('show');
+    $('#id').val('');
+    }   
+    function editFunc(id){
+    $.ajax({
+    type:"POST",
+    url: "{{ url('edit-position') }}",
+    data: { id: id },
+    dataType: 'json',
+    success: function(res){
+    $('#PositionModal').html("Edit Position");
+    $('#position-modal').modal('show');
+    $('#id').val(res.id);
+    $('#name').val(res.name);
+    }
+    });
+    }  
+    function deleteFunc(id){
+    if (confirm("Delete Record?") == true) {
+    var id = id;
+    // ajax
+    $.ajax({
+    type:"POST",
+    url: "{{ url('delete-position') }}",
+    data: { id: id },
+    dataType: 'json',
+    success: function(res){
+    var oTable = $('#position-datatable').dataTable();
+    oTable.fnDraw(false);
+    }
+    });
+    }
+    }
+    $('#PositionForm').submit(function(e) {
+    e.preventDefault();
+    var formData = new FormData(this);
+    $.ajax({
+    type:'POST',
+    url: "{{ url('store-position')}}",
+    data: formData,
+    cache:false,
+    contentType: false,
+    processData: false,
+    success: (data) => {
+    $("#position-modal").modal('hide');
+    var oTable = $('#position-datatable').dataTable();
+    oTable.fnDraw(false);
+    $("#btn-save").html('Submit');
+    $("#btn-save"). attr("disabled", false);
+    },
+    error: function(data){
+    console.log(data);
+    }
+    });
+    });
+    
+    </script>
+</html>
+
+    
 @endsection

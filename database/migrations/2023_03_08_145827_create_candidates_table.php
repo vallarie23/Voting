@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('candidates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('voter_id')->unsigned();
-            $table->foreign('voter_id')->references('id')->on('Voters');
+            $table->foreign('voter_id')->references('id')->on('voters');
             $table->integer('position_id')->unsigned();
             $table->foreign('position_id')
             ->references('id')

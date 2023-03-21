@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SchoolAdmin;
+use App\Models\Schools;
 use Illuminate\Http\Request;
 use Datatables;
 
@@ -14,15 +15,19 @@ class schoolAdminsController extends Controller
      */
     public function index()
     {
+        
         if(request()->ajax()) {
             return datatables()->of(SchoolAdmin::select('*'))
-            ->addColumn('action', 'admins.school.action')
+            ->addColumn('action', 'admins.schoolAdmins.action')
+            ->addColumn('school', function($row){
+                return $row->school->name;
+            })
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
-        return view('admins.school.index'); 
-    
+        $schools = Schools::all();
+        return view('admins.schoolAdmins.index',compact('schools'));
     }
 
     /**
@@ -31,7 +36,7 @@ class schoolAdminsController extends Controller
     public function create()
     {
         
-        return view("admins.schoolAdmins.create");// ////
+        return view("admins.school.create");// ////
     }
 
     /**
@@ -39,18 +44,19 @@ class schoolAdminsController extends Controller
      */
     public function store(Request $request)
     {
-        $schooladminsId = $request->id;
+        $schooladminId = $request->id;
 
-	    $schooladmin   =SchoolAdmin::updateOrCreate(
-	    	        [
-	    	         'id' => $schooladminsId
-	    	        ],
-	                [
-	                'name' => $request->name, 
+        $schooladmin   =SchoolAdmin::updateOrCreate(
+                    [
+                     'id' => $schooladminId
+                    ],
+                    [
+                    'name' => $request->name, 
+                    'school_id' => $request->school_id
             
-	                ]);    
-	                    
-	    return Response()->json($schooladmin);
+                    ]);    
+                        
+        return Response()->json($schooladmin);
     }
 
     /**
@@ -85,6 +91,7 @@ class schoolAdminsController extends Controller
      */
     public function destroy(Request $request)
     {
+        
         $schooladmin = SchoolAdmin::where('id',$request->id)->delete();
       
         return Response()->json($schooladmin);

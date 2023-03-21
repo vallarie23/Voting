@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidates;
+use App\Models\Voters;
+use App\Models\Positions;
 use Datatables;
 
 
@@ -15,16 +17,23 @@ class candidateController extends Controller
      */
     public function index()
     {
-          
+        
         if(request()->ajax()) {
             return datatables()->of(Candidates::select('*'))
-            ->addColumn('action', 'company-action')
+            ->addColumn('action', 'admins.candidate.action')
+            ->addColumn('voter', function($row){
+                return $row->voter->name;
+            })
+            ->addColumn('position', function($row){
+                return $row->position->name;
+            })
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
-       
-        return view("admins.candidate.index");// //
+        $voters = Voters::all();
+        $positions = Positions::all();
+        return view('admins.candidate.index',compact('voters','positions'));
     }
 
     /**
@@ -33,7 +42,7 @@ class candidateController extends Controller
     public function create()
     {
         
-        return view("admins.candidate.create");////
+        return view("admins.school.create");// ////
     }
 
     /**
@@ -41,17 +50,20 @@ class candidateController extends Controller
      */
     public function store(Request $request)
     {
-        
-	    $candidate  =Candidates::updateOrCreate(
-            [
-             'id' => $candidateid
-            ],
-            [
-            'name' => $request->name, 
-    
-            ]);    
-                
-  return Response()->json($candidate);
+        $candidateId = $request->id;
+
+        $candidate   =Candidates::updateOrCreate(
+                    [
+                     'id' => $candidateId
+                    ],
+                    [
+                    'name' => $request->name, 
+                    'position_id' => $request->position_id,
+                    'voter_id' => $request->voter_id
+            
+                    ]);    
+                        
+        return Response()->json($candidate);
     }
 
     /**
@@ -87,7 +99,7 @@ class candidateController extends Controller
     public function destroy(Request $request)
     {
         
-        $candidate =Candidates::where('id',$request->id)->delete();
+        $candidate = Candidates::where('id',$request->id)->delete();
       
         return Response()->json($candidate);
     }

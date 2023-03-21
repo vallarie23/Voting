@@ -23,7 +23,8 @@ return new class extends Migration
             ->on('schools')
             ->onUpdate('cascade')
             ->onDelete('no action');
-            $table->string('year-of_study');
+            $table->string('year_of_study');
+            $table->timestamps();
           
         });
         

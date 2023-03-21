@@ -29,22 +29,22 @@ Route::post('edit-school', [schoolController::class, 'edit']);
 Route::post('delete-school', [schoolController::class, 'destroy']);
 
 //schooladmin
-Route::get('school-datatableAdmins', [schoolAdminsController::class, 'index']);
-Route::post('store-schoolAdmins', [schoolAdminsController::class, 'store']);
-Route::post('edit-schoolAdmins', [schoolAdminsController::class, 'edit']);
-Route::post('delete-schoolAdmins', [schoolAdminsController::class, 'destroy']);
+Route::get('schooladmin-datatable', [schoolAdminsController::class, 'index']);
+Route::post('store-schooladmin', [schoolAdminsController::class, 'store']);
+Route::post('edit-schooladmin', [schoolAdminsController::class, 'edit']);
+Route::post('delete-schooladmin', [schoolAdminsController::class, 'destroy']);
 
-//voters
-Route::get('voters-datatable', [voterssController::class, 'index']);
-Route::post('store-voters', [voterssController::class, 'store']);
-Route::post('edit-voters', [voterssController::class, 'edit']);
-Route::post('delete-voters', [voterssController::class, 'destroy']);
+//voter
+Route::get('voter-datatable', [voterssController::class, 'index']);
+Route::post('store-voter', [voterssController::class, 'store']);
+Route::post('edit-voter', [voterssController::class, 'edit']);
+Route::post('delete-voter', [voterssController::class, 'destroy']);
 
-//positions
-Route::get('positions-datatable', [positionsController::class, 'index']);
-Route::post('store-positions', [positionsController::class, 'store']);
-Route::post('edit-positions', [positionsController::class, 'edit']);
-Route::post('delete-positions', [positionsController::class, 'destroy']);
+//position
+Route::get('position-datatable', [positionsController::class, 'index']);
+Route::post('store-position', [positionsController::class, 'store']);
+Route::post('edit-position', [positionsController::class, 'edit']);
+Route::post('delete-position', [positionsController::class, 'destroy']);
 
 //candidate
 Route::get('candidate-datatable', [candidateController::class, 'index']);

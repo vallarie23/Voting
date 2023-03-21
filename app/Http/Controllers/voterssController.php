@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Voters;
+use App\Models\Schools;
 use Illuminate\Http\Request;
 
 class voterssController extends Controller
@@ -15,21 +16,13 @@ class voterssController extends Controller
         
         if(request()->ajax()) {
             return datatables()->of(Voters::select('*'))
-            ->addColumn('action', 'company-action')
+            ->addColumn('action', 'admins.voters.action')
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
-        return view('admins.voters.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-       
-        return view("admins.voters.create");// // //
+        $schools = Schools::all();
+        return view('admins.voters.index',compact('schools'));
     }
 
     /**
@@ -37,20 +30,22 @@ class voterssController extends Controller
      */
     public function store(Request $request)
     {
-        $votersId = $request->id;
- 
-        $voter   = Voters::updateOrCreate(
+        $voterId = $request->id;
+
+        $voter  =Voters::updateOrCreate(
                     [
-                     'id' => $votersId
+                     'id' => $voterId
                     ],
                     [
                     'name' => $request->name, 
-                    'gender' => $request->gender,
-                    'phone' => $request->phone,
-                    'school_id' => $request->school_id,
-                    'year_of_study' => $request->year_of_study,
+                    'regNo' => $request->regNo, 
+                    'gender' => $request->gender, 
+                    'phone' => $request->phone, 
+                    'year_of_study' => $request->year_of_study, 
+                    'school_id' => $request->school_id
+            
                     ]);    
-                         
+                        
         return Response()->json($voter);
     }
 
@@ -66,12 +61,13 @@ class voterssController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Request $request)
-    {   
+    {
         $where = array('id' => $request->id);
-        $voter  = Voters::where($where)->first();
+        $voter =Voters::where($where)->first();
       
-        return Response()->json($voter);
+        return Response()->json($schooladmin);
     }
+
     /**
      * Update the specified resource in storage.
      */
@@ -85,6 +81,7 @@ class voterssController extends Controller
      */
     public function destroy(Request $request)
     {
+        
         $voter = Voters::where('id',$request->id)->delete();
       
         return Response()->json($voter);
