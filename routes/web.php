@@ -59,32 +59,6 @@ Route::post('edit-result', [resultController::class, 'edit']);
 Route::post('delete-result', [resultController::class, 'destroy']);
 
 
-// positions
-Route::get('/position',[positionsController::class,'index'])->name("position_index");
-Route::get('/position/create',[positionsController::class,'create'])->name("position_create");
-
-//candidate
-Route::get('/candidate',[candidateController::class,'index'])->name("candidate_index");
-Route::get('/candidate/create',[candidateController::class,'create'])->name("candidate_create");
-
-//school
-Route::get('/school',[schoolController::class,'index'])->name("school_index");
-Route::get('/school/create',[schoolController::class,'create'])->name("school_create");
-
-//voters
-Route::get('/voters',[voterssController::class,'index'])->name("voters_index");
-Route::get('/voters/create',[voterssController::class,'create'])->name("voters_create");
-
-//school Admin
-
-Route::get('/schoolAdmins',[schoolAdminsController::class,'index'])->name("schoolAdmins_index");
-Route::get('/schoolAdmins/create',[schoolAdminsController::class,'create'])->name("schoolAdmins_create");
-
-//result
-Route::get('/result',[resultController::class,'index'])->name("result_index");
-Route::get('/result/create',[resultController::class,'create'])->name("result_create");
-
-
 
 Auth::routes();
 
