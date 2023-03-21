@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SchoolAdmin;
+use App\Models\Schools;
 use Illuminate\Http\Request;
 use Datatables;
 
@@ -21,7 +22,8 @@ class schoolAdminsController extends Controller
             ->addIndexColumn()
             ->make(true);
         }
-        return view('admins.school.index'); 
+        $schools = Schools::all();
+        return view('admins.schoolAdmins.index',compact('schools')); 
     
     }
 
@@ -47,6 +49,7 @@ class schoolAdminsController extends Controller
 	    	        ],
 	                [
 	                'name' => $request->name, 
+	                'school_id' => $request->school_id, 
             
 	                ]);    
 	                    

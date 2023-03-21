@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admins.candidate.index'); 
+    return view('index'); 
 });
 //schools
 Route::get('school-datatable', [schoolController::class, 'index']);
@@ -29,7 +29,7 @@ Route::post('edit-school', [schoolController::class, 'edit']);
 Route::post('delete-school', [schoolController::class, 'destroy']);
 
 //schooladmin
-Route::get('school-datatableAdmins', [schoolAdminsController::class, 'index']);
+Route::get('schoolAdmins-datatable', [schoolAdminsController::class, 'index']);
 Route::post('store-schoolAdmins', [schoolAdminsController::class, 'store']);
 Route::post('edit-schoolAdmins', [schoolAdminsController::class, 'edit']);
 Route::post('delete-schoolAdmins', [schoolAdminsController::class, 'destroy']);
@@ -85,3 +85,7 @@ Route::get('/result',[resultController::class,'index'])->name("result_index");
 Route::get('/result/create',[resultController::class,'create'])->name("result_create");
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

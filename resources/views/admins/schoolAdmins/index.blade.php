@@ -48,17 +48,22 @@
 <form action="javascript:void(0)" id="SchoolAdminsForm" name="SchoolAdminsForm" class="form-horizontal" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="id" id="id">
 <div class="form-group">
+<label for="name" class="col-sm-2 control-label">School Name</label>
+<div class="col-sm-12">
+    <select name="school_id" id="school_id" class="form-control" maxlength="50" required="">
+    <option value="0">Select name</option>
+    @foreach ($schools as $school)
+    <option value="{{$school->id}}">{{$school->name}}</option>            
+    @endforeach
+    </select>
+</div>
+</div>
+<div class="form-group">
 <label for="name" class="col-sm-2 control-label">Name</label>
 <div class="col-sm-12">
 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" maxlength="50" required="">
 </div>
-</div>  
-<div class="form-group">
-<label class="col-sm-2 control-label">school name</label>
-<div class="col-sm-12">
-<input type="text" class="form-control" id="school name" name="name" placeholder="Enter school name" required="">
-</div>
-</div>
+</div>   
 <div class="col-sm-offset-2 col-sm-10">
 <button type="submit" class="btn btn-primary" id="btn-save">Save changes</button>
 </button>
@@ -79,10 +84,10 @@ headers: {
 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 }
 });
-$('#schooladmin-datatable').DataTable({
+$('#schoolAdmins-datatable').DataTable({
 processing: true,
 serverSide: true,
-ajax: "{{ url('schooladmin-datatable') }}",
+ajax: "{{ url('schoolAdmins-datatable') }}",
 columns: [
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
@@ -101,12 +106,12 @@ $('#id').val('');
 function editFunc(id){
 $.ajax({
 type:"POST",
-url: "{{ url('edit-schooladmins') }}",
+url: "{{ url('edit-schoolAdmins') }}",
 data: { id: id },
 dataType: 'json',
 success: function(res){
-$('#SchoolAdminsModal').html("Edit SchoolAdmins");
-$('#schoolAdmins-modal').modal('show');
+$('#SchoolAdminsModal').html("Edit SchoolAdmin");
+$('#schooladmins-modal').modal('show');
 $('#id').val(res.id);
 $('#name').val(res.name);
 $('#school_id').val(res.school_id);
@@ -119,11 +124,11 @@ var id = id;
 // ajax
 $.ajax({
 type:"POST",
-url: "{{ url('delete-schooladmins') }}",
+url: "{{ url('delete-schoolAdmins') }}",
 data: { id: id },
 dataType: 'json',
 success: function(res){
-var oTable = $('#schooladmins-datatable').dataTable();
+var oTable = $('#schoolAdmins-datatable').dataTable();
 oTable.fnDraw(false);
 }
 });
@@ -134,14 +139,14 @@ e.preventDefault();
 var formData = new FormData(this);
 $.ajax({
 type:'POST',
-url: "{{ url('store-schooladmins')}}",
+url: "{{ url('store-schoolAdmins')}}",
 data: formData,
 cache:false,
 contentType: false,
 processData: false,
 success: (data) => {
-$("#school-modal").modal('hide');
-var oTable = $('#schooladmins-datatable').dataTable();
+$("#schooladmins-modal").modal('hide');
+var oTable = $('#schoolAdmins-datatable').dataTable();
 oTable.fnDraw(false);
 $("#btn-save").html('Submit');
 $("#btn-save"). attr("disabled", false);
