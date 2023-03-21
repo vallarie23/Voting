@@ -27,7 +27,12 @@ class schoolAdminsController extends Controller
             ->make(true);
         }
         $schools = Schools::all();
+<<<<<<< HEAD
         return view('admins.schoolAdmins.index',compact('schools'));
+=======
+        return view('admins.schoolAdmins.index',compact('schools')); 
+    
+>>>>>>> ec37feb740e1efe80b2126ab141f5feeb21ea2f7
     }
 
     /**
@@ -46,6 +51,7 @@ class schoolAdminsController extends Controller
     {
         $schooladminId = $request->id;
 
+<<<<<<< HEAD
         $schooladmin   =SchoolAdmin::updateOrCreate(
                     [
                      'id' => $schooladminId
@@ -53,6 +59,15 @@ class schoolAdminsController extends Controller
                     [
                     'name' => $request->name, 
                     'school_id' => $request->school_id
+=======
+	    $schooladmin   =SchoolAdmin::updateOrCreate(
+	    	        [
+	    	         'id' => $schooladminsId
+	    	        ],
+	                [
+	                'name' => $request->name, 
+	                'school_id' => $request->school_id, 
+>>>>>>> ec37feb740e1efe80b2126ab141f5feeb21ea2f7
             
                     ]);    
                         

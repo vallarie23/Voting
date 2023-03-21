@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admins.candidate.index'); 
+    return view('index'); 
 });
 //schools
 Route::get('school-datatable', [schoolController::class, 'index']);
@@ -29,6 +29,7 @@ Route::post('edit-school', [schoolController::class, 'edit']);
 Route::post('delete-school', [schoolController::class, 'destroy']);
 
 //schooladmin
+<<<<<<< HEAD
 Route::get('schooladmin-datatable', [schoolAdminsController::class, 'index']);
 Route::post('store-schooladmin', [schoolAdminsController::class, 'store']);
 Route::post('edit-schooladmin', [schoolAdminsController::class, 'edit']);
@@ -45,6 +46,24 @@ Route::get('position-datatable', [positionsController::class, 'index']);
 Route::post('store-position', [positionsController::class, 'store']);
 Route::post('edit-position', [positionsController::class, 'edit']);
 Route::post('delete-position', [positionsController::class, 'destroy']);
+=======
+Route::get('schoolAdmins-datatable', [schoolAdminsController::class, 'index']);
+Route::post('store-schoolAdmins', [schoolAdminsController::class, 'store']);
+Route::post('edit-schoolAdmins', [schoolAdminsController::class, 'edit']);
+Route::post('delete-schoolAdmins', [schoolAdminsController::class, 'destroy']);
+
+//voters
+Route::get('voters-datatable', [voterssController::class, 'index']);
+Route::post('store-voters', [voterssController::class, 'store']);
+Route::post('edit-voters', [voterssController::class, 'edit']);
+Route::post('delete-voters', [voterssController::class, 'destroy']);
+
+//positions
+Route::get('positions-datatable', [positionsController::class, 'index']);
+Route::post('store-positions', [positionsController::class, 'store']);
+Route::post('edit-positions', [positionsController::class, 'edit']);
+Route::post('delete-positions', [positionsController::class, 'destroy']);
+>>>>>>> ec37feb740e1efe80b2126ab141f5feeb21ea2f7
 
 //candidate
 Route::get('candidate-datatable', [candidateController::class, 'index']);
@@ -85,3 +104,7 @@ Route::get('/result',[resultController::class,'index'])->name("result_index");
 Route::get('/result/create',[resultController::class,'create'])->name("result_create");
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
