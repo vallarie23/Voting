@@ -51,12 +51,7 @@
             <div id="schoolAdmin" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">              
-<<<<<<< HEAD
                     <a class="collapse-item" href="{{url("schooladmin-datatable")}}">All School Admins</a>
-=======
-                    <a class="collapse-item" href="{{url("schoolAdmins-datatable")}}">All School Admins</a>
->>>>>>> ec37feb740e1efe80b2126ab141f5feeb21ea2f7
-                   
                 </div>
             </div>
         </li>

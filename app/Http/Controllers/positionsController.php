@@ -15,7 +15,7 @@ class positionsController extends Controller
             
             if(request()->ajax()) {
                 return datatables()->of(Positions::select('*'))
-                ->addColumn('action', 'company-action')
+                ->addColumn('action', 'admins.positions.action')
                 ->rawColumns(['action'])
                 ->addIndexColumn()
                 ->make(true);
@@ -23,15 +23,6 @@ class positionsController extends Controller
             return view('admins.positions.index');
 
         
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-
-        return view("admins.positions.create");//
     }
 
     /**

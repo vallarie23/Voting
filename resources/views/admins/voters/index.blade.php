@@ -6,7 +6,7 @@
 <div class="row">
 <div class="col-lg-12 margin-tb">
 <div class="pull-left">
-<h2>Schools</h2>
+<h2>Voters</h2>
 </div>
 <div class="float-right mb-2">
 <a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Voter</a>

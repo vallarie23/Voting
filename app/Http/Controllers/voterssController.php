@@ -65,7 +65,7 @@ class voterssController extends Controller
         $where = array('id' => $request->id);
         $voter =Voters::where($where)->first();
       
-        return Response()->json($schooladmin);
+        return Response()->json($voter);
     }
 
     /**
