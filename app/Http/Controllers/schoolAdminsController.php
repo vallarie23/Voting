@@ -49,7 +49,7 @@ class schoolAdminsController extends Controller
 
 	    $schooladmin   =SchoolAdmin::updateOrCreate(
 	    	        [
-	    	         'id' => $schooladminsId
+	    	         'id' => $schooladminId
 	    	        ],
 	                [
 	                'name' => $request->name, 
