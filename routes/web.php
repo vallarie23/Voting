@@ -6,6 +6,7 @@ use App\Http\Controllers\resultController;
 use App\Http\Controllers\schoolAdminsController;
 use App\Http\Controllers\schoolController;
 use App\Http\Controllers\voterssController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,12 +54,21 @@ Route::post('edit-candidate', [candidateController::class, 'edit']);
 Route::post('delete-candidate', [candidateController::class, 'destroy']);
 
 //result
-Route::get('result-datatable', [resultController::class, 'index']);
+Route::get('result-datatable', [resultController::class, 'index'])->name('results_index');
 Route::post('store-result', [resultController::class, 'store']);
 Route::post('edit-result', [resultController::class, 'edit']);
 Route::post('delete-result', [resultController::class, 'destroy']);
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/school', [App\Http\Controllers\schoolController::class, 'index'])->name('school');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

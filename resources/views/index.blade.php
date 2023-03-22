@@ -28,7 +28,7 @@ Menu
 </button>
 <div class="collapse navbar-collapse" id="navbarResponsive">
 <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-<li class="nav-item"><a class="nav-link me-lg-3" href="#features">Login</a></li>
+<li class="nav-item"><a class="nav-link me-lg-3" href="{{route('login')}}">Login</a></li>
 {{-- <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Download</a></li> --}}
 </ul>
 {{-- <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
@@ -112,13 +112,6 @@ Menu
     <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <div class="modal-body border-0 p-4">
-    <!-- * * * * * * * * * * * * * * *-->
-    <!-- * * SB Forms Contact Form * *-->
-    <!-- * * * * * * * * * * * * * * *-->
-    <!-- This form is pre-integrated with SB Forms.-->
-    <!-- To make this form functional, sign up at-->
-    <!-- https://startbootstrap.com/solution/contact-forms-->
-    <!-- to get an API token!-->
     <form id="contactForm" data-sb-form-api-token="API_TOKEN">
         <!-- Name input-->
         <div class="form-floating mb-3">
@@ -157,10 +150,7 @@ Menu
                 <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
             </div>
         </div>
-        <!-- Submit error message-->
-        <!---->
-        <!-- This is what your users will see when there is-->
-        <!-- an error submitting the form-->
+        
         <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
         <!-- Submit Button-->
         <div class="d-grid"><button class="btn btn-primary rounded-pill btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
@@ -169,14 +159,11 @@ Menu
 </div>
 </div>
 </div>
-<!-- Bootstrap core JS-->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
+
 <script src="js/scripts.js"></script>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-<!-- * *                               SB Forms JS                               * *-->
-<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

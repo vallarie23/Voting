@@ -88,7 +88,7 @@
 </div>
 </div> 
 <div class="col-sm-offset-2 col-sm-10">
-<button type="submit" class="btn btn-primary" id="btn-save">Save changes
+<button type="save" class="btn btn-primary" id="btn-save">Submit</button>
 </button>
 </div>
 </form>

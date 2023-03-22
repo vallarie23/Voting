@@ -48,7 +48,7 @@
 </div>  
 
 <div class="col-sm-offset-2 col-sm-10">
-<button type="submit" class="btn btn-primary" id="btn-save">Save changes
+<button type="submit" class="btn btn-primary" id="btn-save">Save changes</button>
 </button>
 </div>
 </form>
