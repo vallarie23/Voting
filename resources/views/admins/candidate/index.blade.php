@@ -58,7 +58,7 @@
     <select name="position_id" id="position_id" class="form-control" maxlength="50" required="">
     <option value="0">Select position</option>
     @foreach ($positions as $position)
-    <option value="{{$position->id}}">{{$position->name}} (Men)</option>            
+    <option value="{{$position->id}}">{{$position->name}}</option>            
     @endforeach
     </select>
 </div>
