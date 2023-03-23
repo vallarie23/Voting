@@ -1,3 +1,6 @@
+@extends('base')
+@section('content')
+
 <html>
 <body>
 <div class="container mt-2">
@@ -234,7 +237,7 @@
                         </div>
                         </div>
 
-
+{{-- {{-- uu --}}
 {{-- <!-- boostrap voter model -->
 <div class="modal fade" id="voter-modal" aria-hidden="true">
 <div class="modal-dialog modal-lg">
@@ -300,6 +303,7 @@
 </div>
 </div>
 </div> --}}
-<!-- end bootstrap model -->
+<!-- end bootstrap model --> --}}
 </body>
 </html>
+@endsection
